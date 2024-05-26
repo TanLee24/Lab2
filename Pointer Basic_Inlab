@@ -1,0 +1,30 @@
+CAU 1:
+Hiện thực hàm sau:
+int calcSum(int *ptr, int n);
+Tính và trả về tổng của các phần tử trong mảng 1 chiều được cho bởi con trỏ.
+Trong đó:
+ptr là con trỏ tới phần tử đầu tiên trong mảng.
+n là kích thước của mảng.
+Lưu ý: Bạn cần phải dùng dereference operator (*) để lấy giá trị của các phần tử trong mảng. Không được dùng subscript operator ([]).
+CODE:
+int calcSum(int *ptr, int n)
+{
+        int sum = 0;
+    for (int i = 0; i < n; i++) {
+        sum += *(ptr + i);
+    }
+    return sum;
+}
+
+CAU 2:
+Hiện thực hàm sau:
+void add(int *ptr, int n, int k);
+Thực hiện thêm phần tử vào cuối của mảng 1 chiều được cho bởi con trỏ.
+Trong đó:
+ptr là con trỏ tới phần tử đầu tiên trong mảng.
+n, k lần lượt là kích thước của mảng và phần tử cần được thêm vào.
+CODE:
+void add(int *ptr, int n, int k)
+{
+     *(ptr + n) = k;
+}
