@@ -1,0 +1,142 @@
+CAU 1:
+Cho struct SCP lưu trữ thông tin các vật thể dị thường được mô tả như sau:
+
+struct SCP {
+    int id;
+    int objClass;
+    string speConProcedures;
+    string description;
+    string* addendums;
+    int numAddendums;
+};
+
+Hiện thực một hàm với prototype sau:
+
+SCP createSCP(int id, int objClass, string speConProcedures, string description, string* addendums, int numAddendums);
+
+Hàm có chức năng khởi tạo instance của struct SCP với các thông tin đã truyền vào, sau đó trả về instance đó.
+
+Ghi chú: (Các) thư viện iostream và string đã được khai báo, và namespace std đã được sử dụng.
+CODE:
+SCP createSCP(int id, int objClass, string speConProcedures, string description, string* addendums, int numAddendums) {
+    SCP newSCP;
+    newSCP.id = id;
+    newSCP.objClass = objClass;
+    newSCP.speConProcedures = speConProcedures;
+    newSCP.description = description;
+    newSCP.numAddendums = numAddendums;
+    
+    // Allocate memory for addendums and copy each addendum string
+    newSCP.addendums = new string[numAddendums];
+    for (int i = 0; i < numAddendums; ++i) {
+        newSCP.addendums[i] = addendums[i];
+    }
+    
+    // Return the initialized SCP instance
+    return newSCP;
+}
+
+CAU 2:
+Cho struct SCP lưu trữ thông tin các vật thể dị thường được mô tả như sau:
+
+struct SCP {
+    int id;
+    int objClass;
+    string speConProcedures;
+    string description;
+    string* addendums;
+    int numAddendums;
+};
+
+Hiện thực một hàm với prototype sau:
+
+string convertToString(SCP obj);
+
+Hàm trả về một string duy nhất, với format chuẩn được quy định bởi tổ chức:
+
+Item #: SCP-<Mã định danh, thêm 0 vào trước nếu chưa đủ 3 chữ số>
+Object Class: <Safe nếu objClass là 0, Euclid nếu là 1, Keter nếu là 2>
+Special Containment Procedures: <Quy trình quản thúc đặc biệt>
+Description: <Mô tả vật thể>
+<Phụ lục 0>
+<Phụ lục 1>
+...
+<Phụ lục n>
+
+Tham khảo ví dụ để hiểu về format đầu ra.
+
+Ghi chú: (Các) thư viện iostream và string đã được khai báo, và namespace std đã được sử dụng.
+CODE:
+string convertToString(SCP obj) {
+    stringstream result;
+    result << "Item #: SCP-";
+    
+    if (obj.id < 100) {
+        result << "0";
+    }
+    if (obj.id < 10) {
+        result << "0";
+    }
+    result << obj.id << endl;
+    
+    result << "Object Class: ";
+    switch(obj.objClass) {
+        case 0:
+            result << "Safe" << endl;
+            break;
+        case 1:
+            result << "Euclid" << endl;
+            break;
+        case 2:
+            result << "Keter" << endl;
+            break;
+        default:
+            result << "Unknown" << endl;
+    }
+    
+    result << "Special Containment Procedures: " << obj.speConProcedures << endl;
+    
+    result << "Description: " << obj.description << endl;
+    
+    for (int i = 0; i < obj.numAddendums; ++i) {
+        result << obj.addendums[i] << endl;
+    }
+    
+    return result.str();
+}
+
+CAU 3:
+Cho struct SCP lưu trữ thông tin các vật thể dị thường được mô tả như sau:
+
+struct SCP {
+    int id;
+    int objClass;
+    string speConProcedures;
+    string description;
+    string* addendums;
+    int numAddendums;
+};
+
+Một đối tượng dị thường là SCP-038 có khả năng tạo bản sao của các vật thể dị thường khác, ví dụ như SCP-500 (thuốc vạn ứng). Khi đối tượng gốc bị tiêu thụ/phá hủy, bản sao vẫn tồn tại độc lập.
+
+Hiện thực một hàm với prototype sau:
+
+SCP* cloneSCP(SCP* original);
+
+Hàm có chức năng tạo một bản sao con trỏ loại SCP chứa các thông tin như đối tượng gốc original, sau đó trả về con trỏ đó. Lưu ý về shallow copy và deep copy.
+
+Ghi chú: (Các) thư viện iostream và string đã được khai báo, và namespace std đã được sử dụng.
+CODE:
+SCP* cloneSCP(SCP* original) {
+    SCP* clone = new SCP;
+    clone->id = original->id;
+    clone->objClass = original->objClass;
+    clone->speConProcedures = original->speConProcedures;
+    clone->description = original->description;
+    clone->numAddendums = original->numAddendums;
+    clone->addendums = new string[clone->numAddendums];
+    for (int i = 0; i < clone->numAddendums; ++i) {
+        clone->addendums[i] = original->addendums[i];
+    }
+    return clone;
+}
