@@ -1,0 +1,112 @@
+CAU 1:
+Cho số nguyên n và số nguyên dương e, trong đó n là số cần tính lũy thừa và e là số mũ. Hãy viết một hàm đệ quy 
+
+int calculate_power(int n, int e){} 
+ 
+để tính giá trị của n^e.
+
+Lưu ý không được sử dụng các từ khóa như for, while, goto (thậm chí là tên biến, comment).
+
+Trong bài tập này đã khai báo #include <iostream> và  using namespace std;
+CODE:
+int calculate_power(int n, int e) 
+{ 
+    /*  
+     * STUDENT ANSWER
+     */
+    if (e == 0) return 1; 
+    if (n == 0) return 0;
+    return n * calculate_power(n, e - 1);
+}
+
+CAU 2:
+Một hàm tìm ước số chung lớn nhất của 2 số nguyên dương có thể viết thông qua đệ quy và vòng lặp đơn giản. Bạn hãy viết hàm gcdRecursion để hiện thực tìm ước chung lớn nhất bằng đệ quy và hàm gcdIteration để tìm ước số chung lớn nhất bằng vòng lặp
+
+Đầu vào:
+
+Lần lượt 2 số nguyên p, q (1 ≤ p,q < 109 ).
+
+Đầu ra:
+
+Hàm gcdRecursion và gcdIteration lần lượt trả về giá trị là ước chung lớn nhất của p, q
+#include<iostream>
+#include<string>
+#include <string>
+#include <sstream>
+#include <fstream>
+#include <vector>
+using namespace std;
+
+/* END of library */
+
+
+int gcdRecursion(int p, int q)
+{
+    // BEGIN YOUR IMPLEMENTATION [1]
+    // TODO
+   
+    // END YOUR IMPLEMENTATION [1]
+}
+
+int gcdIteration(int p, int q)
+{
+    // BEGIN YOUR IMPLEMENTATION [2]
+    // TODO
+   
+    // END YOUR IMPLEMENTATION [2]
+    return 0;
+}
+
+int main()
+{
+    hiddenCheck();
+    int p,q;
+    cin>>p>>q;
+    cout<<gcdRecursion(p,q)<< " "<<gcdIteration(p,q);
+    return 0;
+}
+CODE:
+int gcdRecursion(int p, int q)
+{
+    // BEGIN YOUR IMPLEMENTATION [1]
+    // TODO
+    if (q == 0)
+    return p;
+    return gcdRecursion(q, p % q);
+    // END YOUR IMPLEMENTATION [1]
+}
+int gcdIteration(int p, int q)
+{
+    // BEGIN YOUR IMPLEMENTATION [2]
+    // TODO
+    while (q != 0) {
+        int tmp = q;
+        q = p % q;
+        p = tmp;
+    }
+    return p;
+    // END YOUR IMPLEMENTATION [2]
+}
+
+CAU 3:
+Cho một chuỗi, hiện thực hàm 
+
+ 
+
+int strLen(char* str){} 
+ 
+
+để tính độ dài của chuỗi sử dụng đệ quy.
+
+Lưu ý không được sử dụng các từ khóa như for, while, goto (thậm chí là tên biến, comment).
+
+Trong bài tập này đã khai báo #include <iostream> và  using namespace std;
+CODE:
+int strLen(char* str)     
+{ 
+    /*  
+     * STUDENT ANSWER
+     */
+    if (*str == '\0') return 0;
+    return 1 + strLen(str + 1);
+}
