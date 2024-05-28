@@ -1,0 +1,210 @@
+bài 1
+Mô tả tiếng Việt:
+
+Hãy hiện thực hàm readArray() được khai báo như sau:
+
+int** readArray()
+
+Hàm này sẽ đọc dữ liệu cho một ma trận 2 chiều, mỗi chiều có 10 phần tử. Các phần tử của ma trận sẽ được nhập vào từ bàn phím (từ phần tử a[0][0] cho đến a[9][9]). Tuy nhiên nếu phần tử a[i][j] được nhập là 0 thì tất cả các phần tử còn lại trên hàng (a[i][k], j<k<10) đều được tự động gán là là 0, chương trình sẽ đọc tiếp phần tử a[i+1][0] từ bàn phím. Hàm readArray sẽ trả về một con trỏ tới mảng 2 chiều đã nhập này.
+
+Đầu vào: Các phần tử có trong mảng 2 chiều, mỗi phần tử là một số nguyên dương có giá trị không vượt quá 1000.
+
+Đầu ra: Con trỏ tới mảng 2 chiều vừa tạo
+
+English version:
+
+Implement the function readArray() that is declared as below syntax:
+
+int** readArray()
+
+The function reads a two-dimensional matrix each of which consists of 10 elements. These elements are entered from the keyboard (from a[0][0] to a[9][9]). If a[i][j] is assigned to 0, all remained element of the row (a[i][k], j<k<10) will automatically assigned to 0, and the function will continue to input the next-row element from the keyboard. Moreover, this function also returns a pointer which points to the two-dimensional matrix just entered.
+
+Input: The positive integer matrix's elements which not surpass 1000.
+
+Output: The pointer that points to the two-dimensional matrix just entered.
+
+bài 2
+Mô tả tiếng Việt:
+
+Hiện thực hàm void addElement(int*& arr, int n, int val, int index) nhận vào một mảng động arr có chính xác n phần tử và tiến hành chèn giá trị val vào vị trí thứ index.
+
+Đầu vào: Mảng một chiều arr có kích thước n, giá trị cần chèn val và vị trí cần chèn index. Đầu ra: Mảng arr sau khi chèn. Lưu ý: Việc chèn phần tử vào mảng động phải được thực hiện bằng cách giải phóng mảng cũ có n phần tử và cấp phát mảng mới có n+1 phần tử. English version:
+
+Implement the function void addElement(int*& arr, int n, int val, int index) that inputs a dynamic array, arr, consisting of exactly n elements and insert a value, val, into the a specific position, index.
+
+Input: The n-size dynamic array needs to be inserted the value, val, into the specific position, index.
+
+Output: The dynamic array after insert.
+
+Note: Insertion of elements into a dynamic array must be executed by freeing the old array and allocating new memory for the new one.
+
+bài 3
+Mô tả tiếng Việt:
+
+Hiện thực hàm int* flatten(int** matrix, int r, int c) trả về một mảng một chiều được “làm phẳng” từ mảng hai chiều có kích thước r x c (bằng cách nối các hàng của mảng hai chiều lại với nhau).
+
+Đầu vào: Mảng hai chiều có kích thước r x c.
+
+Đầu ra: Mảng một chiều sau khi được “làm phẳng” từ mảng hai chiều đầu vào.
+
+English version:
+
+Implement the function int* flatten(int** matrix, int r, int c) tht returns a one-dimensional array flatten from a two-dimensional matrix of size r x c (by concating all the matrix rows).
+
+Input: The two-dimensional matrix of size r x c
+
+Output: The one-dimensional array flatten from the previous two-dimensional matrix
+
+bài 4
+Mô tả tiếng Việt:
+
+Hiện thực hàm char* concatStr(char* str1, char* str2) trả về một chuỗi là kết quả sau khi nối 2 chuỗi str1 và str2 thành một chuỗi duy duy nhất.
+
+Đầu vào: Hai chuỗi str1 và str2.
+
+Đầu ra: Chuỗi được nỗi từ 2 chuỗi con str1 và str2.
+
+Lưu ý: Không được phép sử dụng các hàm hỗ trợ của thư viện string và string.h cho bài tập này.
+
+English version:
+
+Implement the function char* concatStr(char* str1, char* str2) that return a string merged from two smaller string str1 and str2. Input: Two string str1 and str2.
+
+Output: The string merged from two smaller string str1 and str2.
+
+Note: The string and string.h library are not allowed to use for this exercise.
+
+bài 5
+Mô tả tiếng Việt:
+
+Chuyển vị của một ma trận 2 chiều là một phần quan trọng trong việc tính toán trên ma trận nói riêng và đại số tuyến tính nói chung.
+
+Gọi B là ma trận sau khi chuyển vị của ma trận A thì ma trận B có tính chất là b[i][j] = a[j][i].
+
+Hãy viết hàm int** transposeMatrix(int** matrix, int r, int c) thực hiện phép chuyển vị trên ma trận đã được đề cập bên trên.
+
+Đầu vào:
+
+Con trỏ tới mảng 2 chiều. Mỗi phần tử trong mảng 2 chiều có giá trị trong khoảng (-1000; 1000). Kích thước mảng 2 chiều là 1 cặp số dương r, c. Trong đó: r là số hàng của ma trận, c là số cột của ma trận. Giá trị n không vượt quá 1000. Đầu ra: Con trỏ trỏ tới mảng hai chiều sau khi được chuyển vị. trong trường hợp ma trận đầu vào rỗng, trả về con trỏ null.
+
+CODE
+CAU 1:
+int** readArray()
+{
+   //TODO
+       int** array = new int*[10];
+    for (int i = 0; i < 10; ++i) {
+        array[i] = new int[10];
+    }
+
+    // Read elements from the keyboard
+    for (int i = 0; i < 10; ++i) {
+        for (int j = 0; j < 10; ++j) {
+            cin>>array[i][j];
+            if (array[i][j] == 0) {
+                // Set remaining elements in the row to 0
+                for (int k = j + 1; k < 10; ++k) {
+                    array[i][k] = 0;
+                }
+                // Break to move to the next row
+                break;
+            }
+        }
+    }
+
+    return array;
+}
+
+CAU 2:
+void addElement(int*& arr, int n, int val, int index) {
+    // TODO
+        // Allocate new array of size n + 1
+    int* newArray = new int[n + 1];
+
+    // Copy elements from old array to new array
+    for (int i = 0; i < index; ++i) {
+        newArray[i] = arr[i];
+    }
+    newArray[index] = val; // Insert the new element
+    for (int i = index; i < n; ++i) {
+        newArray[i + 1] = arr[i];
+    }
+
+    // Free the old array
+    delete[] arr;
+
+    // Update the pointer to point to the new array
+    arr = newArray;
+}
+
+CAU 3:
+int* flatten(int** matrix, int r, int c) {
+    //TODO
+       // Allocate memory for the 1D array
+    int* flatArray = new int[r * c];
+
+    // Copy elements from the 2D array to the 1D array
+    for (int i = 0; i < r; ++i) {
+        for (int j = 0; j < c; ++j) {
+            flatArray[i * c + j] = matrix[i][j];
+        }
+    }
+
+    return flatArray;
+}
+
+CAU 4:
+char* concatStr(char* str1, char* str2) {
+    // TODO
+        // Calculate the length of str1
+    int len1 = 0;
+    while (str1[len1] != '\0') {
+        ++len1;
+    }
+
+    // Calculate the length of str2
+    int len2 = 0;
+    while (str2[len2] != '\0') {
+        ++len2;
+    }
+
+    // Allocate memory for the new concatenated string
+    char* result = new char[len1 + len2 + 1]; // +1 for the null terminator
+
+    // Copy characters from str1 to result
+    for (int i = 0; i < len1; ++i) {
+        result[i] = str1[i];
+    }
+
+    // Copy characters from str2 to result
+    for (int i = 0; i < len2; ++i) {
+        result[len1 + i] = str2[i];
+    }
+
+    // Add the null terminator
+    result[len1 + len2] = '\0';
+
+    return result;
+}
+
+CAU 5:
+int** transposeMatrix(int** matrix, int r, int c) {
+    if (r <= 0 || c <= 0) {
+        return nullptr;
+    }
+
+    // Allocate memory for the transposed matrix
+    int** transposedMatrix = new int*[c];
+    for (int i = 0; i < c; ++i) {
+        transposedMatrix[i] = new int[r];
+    }
+
+    // Transpose the matrix
+    for (int i = 0; i < r; ++i) {
+        for (int j = 0; j < c; ++j) {
+            transposedMatrix[j][i] = matrix[i][j];
+        }
+    }
+
+    return transposedMatrix;
+}
