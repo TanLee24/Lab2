@@ -1,0 +1,172 @@
+bài 1 
+Hiện thực hàm sau: int getValueAtIndex(int *ptr, int k); Trả về giá trị của tại vị trí được chỉ định trong mảng qua con trỏ. Trong đó: ptr là con trỏ tới phần tử đầu tiên trong mảng. k là vị trí cần truy xuất phần tử (giá trị này không vượt quá độ dài của mảng).
+Implement the following function: int getValueAtIndex(int *ptr, int k); Return value at the position of the index number through pointer. Where: ptr is a pointer to the first element in the array. k is the access position (this value does not exceed the length of the array).
+
+bài 2
+Hiện thực hàm sau: void swap(int *ptr2, int *ptr2); Thực hiện hoán đổi giá trị tại vị trí của 2 con trỏ trỏ tới. Trong đó: ptr1, ptr2 lần lượt là là các con trỏ trỏ tới vị trí cần hoàn đổi.
+
+bài 1
+
+Mô tả tiếng Việt: Hãy hiện thực hàm int* zeros(int n) tạo một mảng có n phần tử 0. Đầu vào: Kích thước mảng n.
+
+Đầu ra: Con trỏ trỏ tới mảng vừa được cấp phát.
+
+Lưu ý: Trong trường hợp cấp phát thất bại, hàm sẽ trả về nullptr.
+
+English version:
+
+Implement the function int* zeros(int n) which can create an array with n zero element.
+
+Input: The array size n.
+
+Output: The pointer that points to the allocated array.
+
+Note: In the case of failed allocation, the function will return nullptr value.
+
+bài 2 
+Hãy hiện thực hàm void shallowCopy(int*& newArr, int*& arr) có chức năng tạo một bản sao của một mảng một chiều.
+
+Đầu vào: Mảng một chiều arr cần được sao chép.
+
+Đầu ra: Mảng đích một chiều newArr cần sao chép tới.
+
+Lưu ý: sau thực thi mảng được sao chép và mảng cần sao chép đều sử dụng chung một vùng nhớ.
+
+English version:
+
+Implement the function void shallowCopy(int*& newArr, int*& arr) that can create a copy from a one-dimensional array.
+
+Input: The one-dimensional array that needs to be copied.
+
+Output: The destination array.
+
+Note: After finishing execution, both the one-dimensional array that needs to be copied and the destination array use the same data memory.
+
+bài 3
+
+Hãy hiện thực hàm int** deepCopy(int** matrix, int r, int c) trả về một bản sao của matrix gồm r hàng và n cột.
+
+Đầu vào: Con trỏ matrix trỏ đến mảng hai chiều có kích thước r x c.
+
+Đầu ra: Con trỏ trỏ đến mảng hai chiều được sao chép.
+
+Lưu ý: sau thực thi, con trỏ trả về phải trỏ đến vùng nhớ được cấp phát mới và khi matrix truyền vào có kích thước 0, hàm trả về nullptr.
+
+English version:
+
+Implement the function int** deepCopy(int** matrix, int r, int c) that return a copy of a matrix consisting of r rows and c colmuns.
+
+Input: Pointer arr points to the one-dimensional array that needs to be copied.
+
+Output: Pointer newArr points to the destination array.
+
+Note: After finishing execution, the one-dimensional array that needs to be copied and the destination array use the two distinct data memory.
+
+bài 4
+
+Hãy hiện thực hàm void deleteMatrix(int**& matrix, int r) thực hiện giải phóng ô nhớ cho một mảng động 2 chiều có r hàng. matrix được gán bằng giá trị NULL sau khi thực hiện hàm.
+
+Đầu vào: Mảng động hai chiều matrix có số hàng r cần giải phóng ô nhớ.
+
+English version:
+
+Implement the function void deleteMatrix(int**& matrix, int r) that can free memory for a dynamic two-dimensional array consisting of r rows. matrix should be set to NULL after function's execution.
+
+Input: The dynamic two-dimensional array, matrix, consists of r rows.
+
+bài 5
+
+Cho một mảng động hai chiều matrix có kích thước r x c. Hiện thực hàm void insertRow(int**& matrix, int r, int c, int* rowArr, int row) tiến hành chèn mảng rowArr (có kích thước c) vào hàng thứ row của mảng matrix. Đầu vào: Mảng 2 chiều matrix có kích thước r x c, hàng cần chèn rowArr và vị trí chèn row.
+
+Đầu ra: Mảng 2 chiều matrix sau khi được chèn.
+
+English version:
+
+Given a dynamic two-dimensional array of size r x c. Implement the function void insertRow(int**& matrix, int r, int c, int* rowArr, int row) that can insert the rowArr array (with the size c) into the row position, row, of the matrix.
+
+Input: The two-dimensional matrix of size r x c, the insert row rowArr and the insert position row.
+
+Output: The two-dimensional matrix after insert.
+
+CODE:
+BASIC
+CAU 1:
+int getValueAtIndex(int *ptr, int k) {
+    return ptr[k];
+}
+
+CAU 2:
+void swap(int *ptr1, int *ptr2)
+{
+        int temp = *ptr1;
+    *ptr1 = *ptr2;
+    *ptr2 = temp;
+}
+
+POINTER 2
+CAU 1:
+int* zeros(int n) {
+    // TODO
+        if (n <= 0) {
+        return nullptr;
+    }
+    int* array = new(std::nothrow) int[n];
+    if (!array) {
+        return nullptr;
+    }
+    for (int i = 0; i < n; ++i) {
+        array[i] = 0;
+    }
+    return array;
+}
+CAU 2:
+void shallowCopy(int*& newArr, int*& arr) {
+    // TODO
+    newArr = arr;
+}
+
+CAU 3:
+
+CAU 4:
+void deleteMatrix(int**& matrix, int r) {
+    // TODO;
+       if (matrix == nullptr) {
+        return;
+    }
+
+    for (int i = 0; i < r; ++i) {
+        delete[] matrix[i];
+    }
+
+    delete[] matrix;
+    matrix = nullptr;
+}
+
+CAU 5:
+void insertRow(int**& matrix, int r, int c, int* rowArr, int row) {
+    // TODO
+        int** newMatrix = new int*[r + 1];
+
+    // Copy rows up to the insertion point
+    for (int i = 0; i < row; ++i) {
+        newMatrix[i] = matrix[i];
+    }
+
+    // Insert the new row
+    newMatrix[row] = rowArr;
+
+    // Copy the remaining rows
+    for (int i = row; i < r; ++i) {
+        newMatrix[i + 1] = matrix[i];
+    }
+
+    // Update the row count
+    ++r;
+
+    // Deallocate the old matrix array (but not the individual rows, as they are reused)
+    delete[] matrix;
+
+    // Update the matrix pointer
+    matrix = newMatrix;
+
+}
