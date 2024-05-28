@@ -1,0 +1,166 @@
+bài 1
+[Tiếng Việt]
+
+Hoàn thành hàm recursiveSum sử dụng đệ quy để tính và trả về tổng các phần tử trong một mảng
+
+Đầu vào:
+
+int arr[]: Mảng chứa các số nguyên cần tính tổng. int size: Số lượng phần tử trong mảng. Đầu ra: int - Kết quả là tổng các phần tử trong mảng cho trước.
+
+Lưu ý: Sinh viên không được sử dụng các từ khoá sau, kể cả trong tên biến và comment: include, for, while, goto
+
+[English]
+
+Complete the function recursiveSum using recursion to calculate and return the sum of all elements in an array.
+
+Inputs:
+
+int arr[]: An array containing integers to be summed. int size: The size of the array. Output: int - the result is the sum of the elements in the given array.
+
+Note: Students are not allowed to use the following keywords, including in variable names or comments: include, for, while, goto.
+
+bài 2
+[Tiếng Việt ]
+
+Cho một số thập phân dương làm đầu vào, chúng ta cần triển khai hàm
+
+long int decimalToBinary(int decimal_number){}
+
+để chuyển đổi số thập phân dương đã cho thành số nhị phân tương đương.
+
+Xin lưu ý rằng bạn không thể sử dụng từ khóa for, while, goto (ngay cả trong tên biến, comment).
+
+Đối với bài tập này, chúng ta có #include và sử dụng namespace std;
+
+[English ]
+
+Given a positive decimal number as input, we need to implement function
+
+long int decimalToBinary(int decimal_number){}
+
+to convert the given positive decimal number into equivalent binary number.
+
+Please note that you can't using key work for, while, goto (even in variable names, comment).
+
+For this exercise, we have #include and using namespace std;
+
+bài 3
+[Tiếng Việt]
+
+Palindrome là một chuỗi (string) mà nếu đảo ngược thứ tự các ký tự trong chuỗi ta vẫn có được chuỗi cũ. Ví dụ : “ABCBA”, “RADAR”, “otto”, “i am ma i”, “C”.
+
+Hàm palindrome kiểm tra một chuỗi có là Palindrome đã được cho phía dưới.
+
+a/ Viết một chương trình C++ sử dụng vòng lặp while đọc vào nhiều chuỗi và gọi hàm trên để kiểm tra các chuỗi đọc vào có phải là palindrome hay không. Vòng lặp sẽ chấm dứt khi người sử dụng đọc vào một chuỗi bắt đầu bằng *.
+
+b/ Viết hàm palindromeRecursion sử dụng kỹ thuật gọi đệ quy.để kiểm tra một chuỗi có phải là palindrome hay không.
+
+Đầu vào:
+
+Các chuỗi ký tự s có độ dài không quá 1000 ký tự
+
+Đầu ra:
+
+Mỗi dòng trả về giá trị của hàm palindrome và palindromRecursion (xem ví dụ để biết thêm chi tiết)
+
+[English]
+
+Palindrome is a string (string) that if you reverse the order of characters in the string, we still get the old string. For example: “ABCBA”, “RADAR”, “otto”, “i am ma i”, “C”.
+
+The palindrome function checks if a string is the given palindrome.
+
+a/ Write a C++ program that uses a while loop to read multiple strings and call the above function to check whether the input strings are palindrome or not. The loop will terminate when the user reads into a string starting with *.
+
+b/ Write a function palindromeRecursion using recursive calling technique.to check a string is palindrome or not.
+
+Input:
+
+Character strings s with a length of no more than 1000 characters
+
+Output:
+
+Each line returns the value of the palindrome and palindromeRecursion functions (see example for more details)
+
+Template of full code:
+
+#include #include using namespace std; /* END of library */ bool palindrome(string strg); bool palindromeRecursion(string s) { // BEGIN YOUR IMPLEMENTATION [1] // TODO
+
+// END YOUR IMPLEMENTATION [1]
+} int main() { hiddenCheck(); // BEGIN YOUR IMPLEMENTATION [2] // TODO
+
+// END YOUR IMPLEMENTATION [2]
+return 0;
+}
+
+CAU 1:
+int recursiveSum(int arr[], int size) {
+    // TODO
+        // Base case: when size is 0, return 0
+    if (size == 0) {
+        return 0;
+    }
+    // Recursive case: sum the last element and the result of recursive call with size-1
+    return arr[size - 1] + recursiveSum(arr, size - 1);
+    
+}
+
+CAU 2:
+long int decimalToBinaryHelper(int decimal_number, long int place) {
+    // Base case: when decimal_number is 0, return 0
+    if (decimal_number == 0) {
+        return 0;
+    }
+    // Recursive case: compute the remainder and the quotient
+    return (decimal_number % 2) * place + decimalToBinaryHelper(decimal_number / 2, place * 10);
+}
+long int decimalToBinary(int decimal_number)
+{
+	/*
+	* STUDENT ANSWER
+	*/
+	return decimalToBinaryHelper(decimal_number, 1);
+}
+
+CAU 3:
+#include<iostream>
+#include<string>
+using namespace std;
+/* END of library */
+bool palindromef(string strg) {
+    int left = 0, right = strg.length() - 1;
+    while (left < right) {
+        if (strg[left] != strg[right])
+            return false;
+        left++;
+        right--;
+    }
+    return true;
+}
+bool palindromeRecursion(string s)
+{
+    // BEGIN YOUR IMPLEMENTATION [1]
+    // TODO
+        if (s.length() <= 1)
+        return true;
+    if (s[0] != s[s.length() - 1])
+        return false;
+    return palindromeRecursion(s.substr(1, s.length() - 2));
+    // END YOUR IMPLEMENTATION [1]
+}
+
+int main()
+{
+    hiddenCheck();
+    // BEGIN YOUR IMPLEMENTATION [2]
+    // TODO
+       string input;
+    while (true) {
+        getline(cin, input);
+        if (input[0] == '*')
+            break;
+        cout<<(palindromef(input) ? "true" : "false")<<" ";
+        cout<<(palindromeRecursion(input) ? "true" :"false")<<endl;
+}
+    // END YOUR IMPLEMENTATION [2]
+    return 0;
+}
